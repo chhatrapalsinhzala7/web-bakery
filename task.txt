@@ -1,0 +1,13 @@
+1) Change Content of Home Page (2 Days ) (Mostly Complete)
+
+2) Chanee Content of Menu (4 Days)
+
+3) Remove Blog (1 Day)
+
+4) Change Content of About Page (1 Day)
+
+5) Edit Shop Page (3 Days)
+
+6) Recreate whole cart Page
+
+7) Change Content of Contact Page
