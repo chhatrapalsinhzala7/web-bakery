@@ -3,7 +3,7 @@
 body{
 	font-family: 'Poppins', sans-serif;
 	font-weight: 300;
-	font-size: 15px;
+	font-size: 25px;
 	line-height: 1.7;
 	color: #c4c3ca;
 	background-color: #1f2029;
@@ -149,14 +149,14 @@ h6 span{
     padding: 0;
 }
 .form-style {
-  padding: 13px 20px;
-  padding-left: 95px;
-  height: 48px;
+  padding: 13px 30px;
+  padding-left: 65px;
+  height: 51px;
   width: 100%;
   font-weight: 500;
   border-radius: 4px;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 20px;
+  line-height: 26px;
   letter-spacing: 0.5px;
   outline: none;
   color: #c4c3ca;
@@ -175,9 +175,9 @@ h6 span{
 .input-icon {
   position: absolute;
   top: 0;
-  left: 18px;
+  left: 15px;
   height: 48px;
-  font-size: 24px;
+  font-size: 28px;
   line-height: 48px;
   text-align: left;
   color: #f1bf1a;
