@@ -1,16 +1,8 @@
+1)(5-2-2022) login / signup html pages.(sign up-username,email,address,password)(sign-in:-email,password);
 
+2)user dashboard(profile,history)
 
-//Intro 
-1) 1 to 19 Pages \ Student Ach...\Placements Ashu  (25 pages)
+2)php :------------------------------------------------
 
-//Artical --> aditya  6) CyberSecurity hu,Ashu,aditya, ((3+4)7 page / 32 page)
-
-2)events zeel & ayush (12 page / 44 page)
-
-3) club ide 
-
-3) 4th year experience aditya and smith (3 page / 43 page) 
-
-4)outro (2 page / 45 page)
-
-
+add to cart 
+checkout :
