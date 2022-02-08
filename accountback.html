@@ -7,14 +7,14 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css"/>
     <link rel="stylesheet" href="css/reg.css" />
-
+    
     <title>Login/Signup</title>
   </head>
   <body>
     </a>
     <div class="section">
       <div class="container">
-        <div class="row full-height justify-content-center">
+        <form class="row full-height justify-content-center" method="post" action="./php/signup.php">
           <div class="col-12 text-center align-self-center py-5">
             <div class="section pb-5 pt-5 pt-sm-2 text-center">
               <h6 class="mb-0 pb-3">
@@ -69,7 +69,7 @@
                         <div class="form-group">
                           <input
                             type="text"
-                            name="logname"
+                            name="username"
                             class="form-style"
                             placeholder="Your Full Name"
                             id="logname"
@@ -80,7 +80,7 @@
                         <div class="form-group mt-2">
                           <input
                             type="email"
-                            name="logemail"
+                            name="email"
                             class="form-style"
                             placeholder="Your Email"
                             id="logemail"
@@ -89,9 +89,13 @@
                           <i class="input-icon uil uil-at"></i>
                         </div>
                         <div class="form-group mt-2">
+                          <textarea name="address" class="form-style"></textarea>
+                          <i class="input-icon uil uil-at"></i>
+                        </div>
+                        <div class="form-group mt-2">
                           <input
                             type="password"
-                            name="logpass"
+                            name="password"
                             class="form-style"
                             placeholder="Your Password"
                             id="logpass"
@@ -99,7 +103,7 @@
                           />
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
-                        <a href="#" class="btn mt-4">submit</a>
+                        <input type="submit" class="btn mt-4">
                       </div>
                     </div>
                   </div>
@@ -107,7 +111,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </body>
