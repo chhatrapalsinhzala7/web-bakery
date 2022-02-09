@@ -2,17 +2,14 @@
 session_start();
 require('./php/dbconfig.php');
 
-if(isset($_POST["add"]) && isset($_SESSION["cart"]))
-{
+if (isset($_POST["add"]) && isset($_SESSION["cart"])) {
 	echo "Add";
 	$_SESSION["cart"][$_POST["id"]]["quantity"]++;
 	print_r($_SESSION["cart"]);
-}
-elseif(isset($_POST["remove"]) && isset($_SESSION["cart"]))
-{
+} elseif (isset($_POST["remove"]) && isset($_SESSION["cart"])) {
 	echo "Remove";
-	if($_SESSION["cart"][$_POST["id"]]["quantity"]<=1){}
-	else{
+	if ($_SESSION["cart"][$_POST["id"]]["quantity"] <= 1) {
+	} else {
 		$_SESSION["cart"][$_POST["id"]]["quantity"]--;
 	}
 	print_r($_SESSION["cart"]);
@@ -103,7 +100,6 @@ elseif(isset($_POST["remove"]) && isset($_SESSION["cart"]))
 			<div class="row">
 				<div class="col-md-12 ftco-animate">
 					<div class="cart-list">
-						<form method="post">
 						<table class="table">
 							<thead class="thead-primary">
 								<tr class="text-center">
@@ -116,122 +112,135 @@ elseif(isset($_POST["remove"]) && isset($_SESSION["cart"]))
 								</tr>
 							</thead>
 							<tbody>
-								<?php
-								if (isset($_SESSION["cart"])) {
-									foreach ($_SESSION["cart"] as $item) {
-								?>
-										<tr class="text-center">
-											<td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
 
-											<td class="image-prod">
-												<div class="img" style="background-image:url(images/<?php echo $item["image"]; ?>);"></div>
-											</td>
-
-											<td class="product-name">
-												<h3><?php echo $item["name"]; ?></h3>
-											</td>
-
-											<td class="price">₹<?php echo $item["price"]; ?></td>
-
-											<td class="quantity">
-												<div class="input-group mb-3">
-													<span class="input-group-btn mr-2">
-			
-													<!-- <input type="submit" class="quantity-right-plus btn icon-minus" name="remove"> -->
-														<button type="submit" class="quantity-left-minus btn" name="remove" data-type="minus" data-field="">
-															<i class="icon-minus"></i>
-														</button>
-													</span>
-													<input type="hidden" name="id" value="<?php echo $item["id"]; ?>">
-													<input type="text" id="quantity" name="quantity" class="form-control input-number" value="<?php echo $item["quantity"] ?>" min="1" max="100">
-													<span class="input-group-btn ml-2">
-														<!-- <input type="submit" class="quantity-right-plus btn icon-plus" name="add"> -->
-														<button type="submit" class="quantity-right-plus btn" name="add" data-type="plus" data-field="">
-															<i class="icon-plus"></i>
-														</button> 
-													</span>
-													<!-- <input type="text" name="quantity" class="quantity form-control input-number" value="<?php //echo $item["quantity"] ?>" min="1" max="100"> -->
-												</div>
-											</td>
-											<td class="total"><?php echo $item["price"] * $item["quantity"] ?></td>
+								<form method="post">
 									<?php
-									}
-								}
+									if (isset($_SESSION["cart"])) {
+										foreach ($_SESSION["cart"] as $item) {
 									?>
-										<tr class="text-center">
-											<td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
+											<tr class="text-center">
+												<td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
 
-											<td class="image-prod">
-												<div class="img" style="background-image:url(images/menu-2.jpg);"></div>
-											</td>
+												<td class="image-prod">
+													<div class="img" style="background-image:url(images/<?php echo $item["image"]; ?>);"></div>
+												</td>
 
-											<td class="product-name">
-												<h3>Creamy Latte Coffee</h3>
-												<p>Far far away, behind the word mountains, far from the countries</p>
-											</td>
+												<td class="product-name">
+													<h3><?php echo $item["name"]; ?></h3>
+												</td>
 
-											<td class="price">$4.90</td>
+												<td class="price">₹<?php echo $item["price"]; ?></td>
 
-											<td class="quantity">
-												<div class="input-group mb-3">
-													<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-												</div>
-											</td>
+												<td class="quantity">
+													<div class="input-group mb-3">
+														<span class="input-group-btn mr-2">
 
-											<td class="total">$4.90</td>
-										</tr><!-- END TR-->
+															<!-- <input type="submit" class="quantity-right-plus btn icon-minus" name="remove"> -->
+															<button type="submit" class="quantity-left-minus btn" name="remove" data-type="minus" data-field="">
+																<i class="icon-minus"></i>
+															</button>
+														</span>
+														<input type="hidden" name="id" value="<?php echo $item["id"]; ?>">
+														<input type="text" id="quantity" name="quantity" class="form-control input-number" value="<?php echo $item["quantity"] ?>" min="1" max="100">
+														<span class="input-group-btn ml-2">
+															<!-- <input type="submit" class="quantity-right-plus btn icon-plus" name="add"> -->
+															<button type="submit" class="quantity-right-plus btn" name="add" data-type="plus" data-field="">
+																<i class="icon-plus"></i>
+															</button>
+														</span>
+														<!-- <input type="text" name="quantity" class="quantity form-control input-number" value="<?php //echo $item["quantity"] 
+																																					?>" min="1" max="100"> -->
+													</div>
+												</td>
+												<td class="total"><?php echo $item["price"] * $item["quantity"] ?></td>
+										<?php
+										}
+									}
+										?>
+											<tr class="text-center">
+												<td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
 
-										<tr class="text-center">
-											<td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
+												<td class="image-prod">
+													<div class="img" style="background-image:url(images/menu-2.jpg);"></div>
+												</td>
 
-											<td class="image-prod">
-												<div class="img" style="background-image:url(images/dish-2.jpg);"></div>
-											</td>
+												<td class="product-name">
+													<h3>Creamy Latte Coffee</h3>
+													<p>Far far away, behind the word mountains, far from the countries</p>
+												</td>
 
-											<td class="product-name">
-												<h3>Grilled Ribs Beef</h3>
-												<p>Far far away, behind the word mountains, far from the countries</p>
-											</td>
+												<td class="price">$4.90</td>
 
-											<td class="price">$15.70</td>
+												<td class="quantity">
+													<div class="input-group mb-3">
+														<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
+													</div>
+												</td>
 
-											<td class="quantity">
-												<div class="input-group mb-3">
-													<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-												</div>
-											</td>
+												<td class="total">$4.90</td>
+											</tr><!-- END TR-->
 
-											<td class="total">$15.70</td>
-										</tr><!-- END TR-->
+								</form>
+								<tr class="text-center">
+									<td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
+
+									<td class="image-prod">
+										<div class="img" style="background-image:url(images/dish-2.jpg);"></div>
+									</td>
+
+									<td class="product-name">
+										<h3>Grilled Ribs Beef</h3>
+										<p>Far far away, behind the word mountains, far from the countries</p>
+									</td>
+
+									<td class="price">$15.70</td>
+
+									<td class="quantity">
+										<div class="input-group mb-3">
+											<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
+										</div>
+									</td>
+
+									<td class="total">$15.70</td>
+								</tr><!-- END TR-->
 							</tbody>
 						</table>
-						</form>
 					</div>
 				</div>
 			</div>
 			<div class="row justify-content-end">
 				<div class="col col-lg-3 col-md-6 mt-5 cart-wrap ftco-animate">
+				<form method="post" action="/php/order.php">
 					<div class="cart-total mb-3">
 						<h3>Cart Totals</h3>
 						<p class="d-flex">
 							<span>Subtotal</span>
-							<span>$20.60</span>
+							<span>₹
+								<?php if (isset($_SESSION["cart"])) {
+									$total = 0;
+									foreach ($_SESSION["cart"] as $item) {
+										$total += $item["price"] * $item["quantity"];
+									}
+									$_SESSION["total"] = $total;
+									echo $total;
+								}
+								?>
+							</span>
 						</p>
-						<p class="d-flex">
-							<span>Delivery</span>
-							<span>$0.00</span>
-						</p>
-						<p class="d-flex">
-							<span>Discount</span>
-							<span>$3.00</span>
-						</p>
-						<hr>
-						<p class="d-flex total-price">
-							<span>Total</span>
-							<span>$17.60</span>
-						</p>
+							<p class="d-flex">
+								<span>Delivery</span>
+								<span>₹10.00</span>
+							</p>
+							<hr>
+							<p class="d-flex total-price">
+								<span>Total</span>
+								<span><?php
+										$_SESSION["total"] += 10;
+										echo $_SESSION["total"]; ?></span>
+							</p>
 					</div>
-					<p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+					<p class="text-center"><input type="submit" class="btn btn-primary py-3 px-4" value="Checkout"></p>
+				</form>
 				</div>
 			</div>
 		</div>
