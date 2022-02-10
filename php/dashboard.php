@@ -9,7 +9,6 @@
                 <?php echo $_SESSION['address']; ?>
             </textarea>
             <input type="password" name="password">
-
         </form>
         <?php
     }

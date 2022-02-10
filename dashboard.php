@@ -1,4 +1,23 @@
-z<!DOCTYPE html>
+<?php
+  session_start();
+  require('./php/dbconfig.php');
+  if(!isset($_SESSION['userid']))
+  {
+      header('Location: ./index.html');
+  }
+  $userid = $_SESSION['userid'];
+  $sql = "SELECT COUNT(*) FROM `orders` WHERE userid = $userid;";
+  $result = $conn->query($sql);
+  $row = $result->fetch_assoc();
+  $count = $row['COUNT(*)'];
+  $_SESSION['totalorders'] = $count;
+  $sql = "SELECT SUM(Price) FROM `orders` WHERE userid = $userid; ";
+  $result = $conn->query($sql);
+  $row = $result->fetch_assoc();
+  $count = $row['SUM(Price)'];
+  $_SESSION['totalmoney'] = $count;
+?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -163,7 +182,7 @@ z<!DOCTYPE html>
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">1200</h3>
+                          <h3 class="mb-0"><?php echo $_SESSION["totalorders"]; ?></h3>
                           
                         </div>
                       </div>
@@ -183,7 +202,7 @@ z<!DOCTYPE html>
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">$17.34</h3>
+                          <h3 class="mb-0"><?php echo $_SESSION["totalmoney"]; ?></h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">+11%</p>
                         </div>
                       </div>
@@ -230,63 +249,35 @@ z<!DOCTYPE html>
                       <table class="table">
                         <thead>
                           <tr>
-                            <th>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input type="checkbox" class="form-check-input">
-                                </label>
-                              </div>
-                            </th>
-                            <th> Item Name </th>
                             <th> Order No </th>
+                            <th> Item Name </th>
                             <th> Item Cost </th>
-                           
-                            <th> Payment Mode </th>
-                            <th> Start Date </th>
-                            <th> Payment Status </th>
+                            <th> Payment Mode</th>
+                            <th> Success </th>
                           </tr>
                         </thead>
                         <tbody>
+                          <?php
+                          $sql = "SELECT * FROM orders WHERE userid = '".$_SESSION["userid"]."'";
+                          $result = mysqli_query($conn, $sql);
+                          if (mysqli_num_rows($result) > 0) {
+                            while($row = mysqli_fetch_assoc($result))
+                            {
+                          ?>
                           <tr>
-                            <td>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input type="checkbox" class="form-check-input">
-                                </label>
-                              </div>
-                            </td>
-                            <td>
-                              <img src="assets/images/faces/face1.jpg" alt="image" />
-                              <span class="pl-2">Henry Klein</span>
-                            </td>
-                            <td> 02312 </td>
-                            <td> $14,500 </td>
+                            <td> <?php echo $row["Id"]; ?> </td>
+                            <td> <?php echo $row["OrderItems"]; ?> </td>
+                            <td> <?php echo $row["Price"]; ?> </td>
                             <td> Cash on delivery</td>
-                            <td> 04 Dec 2019 </td>
                             <td>
                               <div class="badge badge-outline-success">complete</div>
                             </td>
                           </tr>
-                          <tr>
-                            <td>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input type="checkbox" class="form-check-input">
-                                </label>
-                              </div>
-                            </td>
-                            <td>
-                              <img src="assets/images/faces/face2.jpg" alt="image" />
-                              <span class="pl-2">Estella Bryan</span>
-                            </td>
-                            <td> 02312 </td>
-                            <td> $14,500 </td>
-                            <td> Cash on delivery </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-danger">Canceled</div>
-                            </td>
-                          </tr>      
+                             <?php
+                            }
+                          }
+
+                             ?>   
                         </tbody>
                       </table>
                     </div>
