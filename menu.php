@@ -2,26 +2,19 @@
 session_start();
 require('./php/dbconfig.php');
 
-if(isset($_POST["atc"])){
-	if(isset($_SESSION["cart"]))
-	{
-		if(isset($_SESSION["cart"][$_POST["id"]]))
-		{
+if (isset($_POST["atc"])) {
+	if (isset($_SESSION["cart"])) {
+		if (isset($_SESSION["cart"][$_POST["id"]])) {
 			$_SESSION["cart"][$_POST["id"]]["quantity"]++;
 			print_r($_SESSION["cart"]);
-		}
-		else
-		{
-			$_SESSION["cart"][$_POST["id"]]= array("name"=>$_POST["pname"],"price"=>$_POST["price"],"quantity"=>1, "image"=>$_POST["image"], "id"=>$_POST["id"]);
+		} else {
+			$_SESSION["cart"][$_POST["id"]] = array("name" => $_POST["pname"], "price" => $_POST["price"], "quantity" => 1, "image" => $_POST["image"], "id" => $_POST["id"]);
 			print_r($_SESSION["cart"]);
 		}
-	}
-	else
-	{
-		$_SESSION["cart"] = array($_POST["id"]=>array("name"=>$_POST["pname"],"price"=>$_POST["price"],"quantity"=>1, "image"=>$_POST["image"], "id"=>$_POST["id"]));
+	} else {
+		$_SESSION["cart"] = array($_POST["id"] => array("name" => $_POST["pname"], "price" => $_POST["price"], "quantity" => 1, "image" => $_POST["image"], "id" => $_POST["id"]));
 		print_r($_SESSION["cart"]);
 	}
-
 }
 ?>
 <!DOCTYPE html>
@@ -74,15 +67,14 @@ if(isset($_POST["atc"])){
 					<li class="nav-item cart class=" icon icon-person"><a href="account.html" class="nav-link"><span class="icon icon-person"></span><span class=" d-flex justify-content-center align-items-center">
 
 					<li class="nav-item cart"><a href="cart.html" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center">
-						<small><?php 
-						if(isset($_SESSION["cart"])){
-							echo count($_SESSION["cart"]);
-						}
-						else{
-							echo "0";
-						}
-						?></small>
-					</span></a></li>
+								<small><?php
+										if (isset($_SESSION["cart"])) {
+											echo count($_SESSION["cart"]);
+										} else {
+											echo "0";
+										}
+										?></small>
+							</span></a></li>
 				</ul>
 			</div>
 		</div>
@@ -212,24 +204,24 @@ if(isset($_POST["atc"])){
 										if ($result->num_rows > 0) {
 											// output data of each row
 											while ($row = $result->fetch_assoc()) {
-												?>
-												
-										<div class="col-md-4 text-center">
-											<form class="menu-wrap" method="post">
-												<a href="#" class="menu-img img mb-4" style="background-image: url(images/<?php echo $row["Image"] ?>);"></a>
-												<div class="text">
-													<input type="hidden" value="<?php echo $row["Id"]; ?>" name="id">
-													<input type="hidden" value="<?php echo $row["ProductName"]; ?>" name="pname">
-													<input type="hidden" value="<?php echo $row["Price"]; ?>" name="price">
-													<input type="hidden" value="<?php echo $row["Image"]; ?>" name="image">
-													<h3><a href="#"><?php echo $row["ProductName"]; ?></a></h3>
-													<p><?php echo $row["Description"]; ?></p>
-													<p class="price"><span>₹<?php echo $row["Price"]; ?></span></p>
-													<p><input type="submit" class="btn btn-primary btn-outline-primary" name="atc" value="Add To Cart"></p>
+										?>
+
+												<div class="col-md-4 text-center">
+													<form class="menu-wrap" method="post">
+														<a href="#" class="menu-img img mb-4" style="background-image: url(images/<?php echo $row["Image"] ?>);"></a>
+														<div class="text">
+															<input type="hidden" value="<?php echo $row["Id"]; ?>" name="id">
+															<input type="hidden" value="<?php echo $row["ProductName"]; ?>" name="pname">
+															<input type="hidden" value="<?php echo $row["Price"]; ?>" name="price">
+															<input type="hidden" value="<?php echo $row["Image"]; ?>" name="image">
+															<h3><a href="#"><?php echo $row["ProductName"]; ?></a></h3>
+															<p><?php echo $row["Description"]; ?></p>
+															<p class="price"><span>₹<?php echo $row["Price"]; ?></span></p>
+															<p><input type="submit" class="btn btn-primary btn-outline-primary" name="atc" value="Add To Cart"></p>
+														</div>
+													</form>
 												</div>
-											</form>
-										</div>
-												<?php
+										<?php
 											}
 										}
 										?>
