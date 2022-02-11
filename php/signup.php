@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('.\dbconfig.php');
+require('./dbconfig.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['username']) && isset($_POST['address']) && $_POST['email'] != '' && $_POST['password'] != '' && $_POST['username'] != '' && $_POST['address'] != '') {

@@ -203,7 +203,7 @@ if (isset($_POST["add"]) && isset($_SESSION["cart"])) {
 			</div>
 			<div class="row justify-content-end">
 				<div class="col col-lg-3 col-md-6 mt-5 cart-wrap ftco-animate">
-				<form method="post" action="/php/order.php">
+				<form method="post" action="./php/order.php">
 					<div class="cart-total mb-3">
 						<h3>Cart Totals</h3>
 						<p class="d-flex">

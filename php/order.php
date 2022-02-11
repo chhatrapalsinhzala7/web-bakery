@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require('.\dbconfig.php');
+    require('./dbconfig.php');
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_SESSION["cart"])&&isset($_SESSION['userid'])&&isset($_SESSION["total"]))
         {

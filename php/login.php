@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('.\dbconfig.php');
+require('./dbconfig.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (isset($_POST['email']) && isset($_POST['password']) && $_POST['email'] != '' && $_POST['password'] != '') {
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['username'] = $row['Username'];
                 $_SESSION['email'] = $row['Email'];
                 $_SESSION['address'] = $row['Address'];
-                header('Location: ./dashboard.php');
+                header('Location: ../dashboard.html');
             }    
         }
         
