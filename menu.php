@@ -66,7 +66,7 @@ if (isset($_POST["atc"])) {
 					<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 					<li class="nav-item cart class=" icon icon-person"><a href="account.html" class="nav-link"><span class="icon icon-person"></span><span class=" d-flex justify-content-center align-items-center">
 
-					<li class="nav-item cart"><a href="cart.html" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center">
+					<li class="nav-item cart"><a href="cart.php" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center">
 								<small><?php
 										if (isset($_SESSION["cart"])) {
 											echo count($_SESSION["cart"]);
