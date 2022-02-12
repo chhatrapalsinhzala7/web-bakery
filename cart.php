@@ -13,7 +13,9 @@ if (isset($_POST["add"]) && isset($_SESSION["cart"])) {
 		$_SESSION["cart"][$_POST["id"]]["quantity"]--;
 	}
 	print_r($_SESSION["cart"]);
-}
+} elseif (isset($_POST["close"])) {
+	unset($_SESSION["cart"][$_POST["id"]]);
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -112,7 +114,11 @@ if (isset($_POST["add"]) && isset($_SESSION["cart"])) {
 										foreach ($_SESSION["cart"] as $item) {
 									?>
 											<tr class="text-center">
-												<td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
+												<td class="product-remove">
+													<button type="submit" name="close">
+														<i class="icon-close"></i>
+													</button>
+												</td>
 
 												<td class="image-prod">
 													<div class="img" style="background-image:url(images/<?php echo $item["image"]; ?>);"></div>
