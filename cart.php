@@ -3,16 +3,16 @@ session_start();
 require('./php/dbconfig.php');
 
 if (isset($_POST["add"]) && isset($_SESSION["cart"])) {
-	echo "Add";
+	
 	$_SESSION["cart"][$_POST["id"]]["quantity"]++;
-	print_r($_SESSION["cart"]);
+	
 } elseif (isset($_POST["remove"]) && isset($_SESSION["cart"])) {
 	echo "Remove";
 	if ($_SESSION["cart"][$_POST["id"]]["quantity"] <= 1) {
 	} else {
 		$_SESSION["cart"][$_POST["id"]]["quantity"]--;
 	}
-	print_r($_SESSION["cart"]);
+	
 } elseif (isset($_POST["close"])) {
 	unset($_SESSION["cart"][$_POST["id"]]);
 } 
@@ -21,7 +21,7 @@ if (isset($_POST["add"]) && isset($_SESSION["cart"])) {
 <html lang="en">
 
 <head>
-	<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+	<title>Bake N' Take'</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -156,52 +156,10 @@ if (isset($_POST["add"]) && isset($_SESSION["cart"])) {
 										}
 									}
 										?>
-											<tr class="text-center">
-												<td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
-
-												<td class="image-prod">
-													<div class="img" style="background-image:url(images/menu-2.jpg);"></div>
-												</td>
-
-												<td class="product-name">
-													<h3>Creamy Latte Coffee</h3>
-													<p>Far far away, behind the word mountains, far from the countries</p>
-												</td>
-
-												<td class="price">$4.90</td>
-
-												<td class="quantity">
-													<div class="input-group mb-3">
-														<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-													</div>
-												</td>
-
-												<td class="total">$4.90</td>
-											</tr><!-- END TR-->
+											
 
 								</form>
-								<tr class="text-center">
-									<td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
-
-									<td class="image-prod">
-										<div class="img" style="background-image:url(images/dish-2.jpg);"></div>
-									</td>
-
-									<td class="product-name">
-										<h3>Grilled Ribs Beef</h3>
-										<p>Far far away, behind the word mountains, far from the countries</p>
-									</td>
-
-									<td class="price">$15.70</td>
-
-									<td class="quantity">
-										<div class="input-group mb-3">
-											<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-										</div>
-									</td>
-
-									<td class="total">$15.70</td>
-								</tr><!-- END TR-->
+								
 							</tbody>
 						</table>
 					</div>
