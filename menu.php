@@ -6,14 +6,14 @@ if (isset($_POST["atc"])) {
 	if (isset($_SESSION["cart"])) {
 		if (isset($_SESSION["cart"][$_POST["id"]])) {
 			$_SESSION["cart"][$_POST["id"]]["quantity"]++;
-			print_r($_SESSION["cart"]);
+			
 		} else {
 			$_SESSION["cart"][$_POST["id"]] = array("name" => $_POST["pname"], "price" => $_POST["price"], "quantity" => 1, "image" => $_POST["image"], "id" => $_POST["id"]);
-			print_r($_SESSION["cart"]);
+			
 		}
 	} else {
 		$_SESSION["cart"] = array($_POST["id"] => array("name" => $_POST["pname"], "price" => $_POST["price"], "quantity" => 1, "image" => $_POST["image"], "id" => $_POST["id"]));
-		print_r($_SESSION["cart"]);
+		
 	}
 }
 ?>

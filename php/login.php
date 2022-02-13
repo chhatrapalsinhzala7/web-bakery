@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['username'] = $row['Username'];
                 $_SESSION['email'] = $row['Email'];
                 $_SESSION['address'] = $row['Address'];
-                header('Location: ../dashboard.html');
+                header('Location: ./dashboard.html');
             }    
         }
         
