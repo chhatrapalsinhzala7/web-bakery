@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['username'] = $username;
             $_SESSION['email'] = $email;
             $_SESSION['address'] = $address;
-            header('Location: ./dashboard.php');
+            header('Location: ./dashboard.html');
         } 
 
         $conn->close();
